@@ -1,222 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AstroPyre Intelligence · Flame in Freefall</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<style>
-:root{color-scheme:dark;--bg:#07050f;--card:#110c21;--line:rgba(255,255,255,.09);--ink:#fff;--mute:#a1a1c2;--vio:#8b5cf6;--vio2:#a78bfa;--glow:rgba(139,92,246,.35);--red:#f87171;--amb:#fbbf24;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;color:var(--ink);background:var(--bg) radial-gradient(circle at 15% 10%,rgba(139,92,246,.14),transparent 40%) no-repeat;font:400 15px/1.5 Inter,system-ui,sans-serif;min-height:100vh}
-.mono{font-family:"JetBrains Mono",monospace}
-header{border-bottom:1px solid var(--line);padding:14px 16px}
-.hd{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-.brand b{font-size:21px}.brand span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-left:8px;padding:2px 8px;border-radius:99px;background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.35)}
-.brand p{margin:2px 0 0;font-size:12px;color:var(--mute)}
-nav{display:flex;flex-wrap:wrap;gap:4px;background:rgba(255,255,255,.05);padding:4px;border-radius:12px;border:1px solid var(--line)}
-button,select,input{font:inherit}
-nav button{background:none;border:0;color:#cfcfe8;padding:8px 12px;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer}
-nav button.on,.on{background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;box-shadow:0 0 16px rgba(124,58,237,.4)}
-:focus-visible{outline:2px solid var(--vio2);outline-offset:2px}
-main{max-width:1100px;margin:0 auto;padding:22px 16px 48px}
-.card{background:rgba(17,12,33,.88);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 28px rgba(0,0,0,.4)}
-h2{font-size:17px;margin:0 0 4px}h3{font-size:15px;margin:0 0 10px}
-.mute{color:var(--mute);font-size:13px}
-.note{border-left:3px solid var(--vio);background:rgba(139,92,246,.08);padding:9px 12px;border-radius:0 8px 8px 0;font-size:13px;color:#d8ccff;margin:12px 0}
-.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:12px 0}
-label{font-size:12px;color:var(--mute);display:block;margin-bottom:4px}
-select,input[type=search]{width:100%;padding:8px 10px;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:9px}
-select option{color:#000}
-.item{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
-.sc{font-size:28px;font-weight:700;color:var(--vio2);line-height:1}.sc small{display:block;font-size:10px;color:var(--mute);font-weight:400;margin-top:3px}
-.tag{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;margin:0 4px 4px 0;color:#cfcfe8}
-.tag.f{border-color:var(--vio2);color:var(--vio2)}
-a{color:var(--vio2)}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-@media(max-width:860px){.grid3{grid-template-columns:1fr}}
-.pills{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:10px 0}
-.pill,.gb,.pre{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#e5e5f5;border-radius:10px;padding:8px 10px;font-size:12px;text-align:left;cursor:pointer}
-.pre{display:inline-block;margin:0 6px 6px 0;border-radius:99px;padding:4px 10px}
-.pill b,.gb b{display:block;font-size:13px}
-.gg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 14px}
-.row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
-.row b{color:var(--vio2)}
-input[type=range]{width:100%;accent-color:var(--vio)}
-.cv{background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:12px;width:100%;height:240px;display:block}
-.badge{float:right;font-size:11px;padding:2px 10px;border-radius:99px;font-weight:700;border:1px solid}
-.big{font-size:44px;font-weight:700;line-height:1}.stat{border-top:1px solid var(--line);padding:8px 0;font-size:13px;display:flex;justify-content:space-between}
-.hide{display:none}
-.ea{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
-footer{max-width:1100px;margin:0 auto;padding:0 16px 30px;color:var(--mute);font-size:12px}
-</style>
-</head>
-<body>
-<header><div class="hd">
-  <div class="brand"><b>AstroPyre</b><span>Intelligence</span><p>Fire safety insights from NASA microgravity combustion data</p></div>
-  <nav id="tabs" aria-label="Sections">
-    <button class="on" data-t="explorer">Investigation Explorer</button>
-    <button data-t="lab">Flammability Lab</button>
-    <button data-t="ai">AI Insights</button>
-    <button data-t="earth">Earth Applications</button>
-  </nav>
-</div></header>
+# Flame in Freefall Dashboard
 
-<main>
-<!-- 1 EXPLORER -->
-<section id="explorer" class="card">
-  <h2>1. Investigation Explorer</h2>
-  <p class="mute">Which NASA PSI combustion investigations matter most for a given crewed environment?</p>
-  <div class="ctl">
-    <div><label for="env">Crew environment</label><select id="env"><option value="iss">Space station (ISS-like)</option><option value="moon">Lunar surface base</option><option value="rover">Pressurized rover</option></select></div>
-    <div><label for="fuel">Fuel type</label><select id="fuel"><option value="">All</option><option>Solid</option><option>Liquid droplet</option><option>Gas</option><option>Smoke / aerosol</option><option>Ground study</option></select></div>
-    <div><label for="q">Search</label><input id="q" type="search" placeholder="e.g. BASS, smoke, extinguishment"></div>
-  </div>
-  <div class="note">Catalog: the 19 combustion entries NASA lists as eligible PSI investigations. Fuel types, tags and relevance scores are preliminary team heuristics, not NASA data, and are being verified against the PSI investigation pages.</div>
-  <div class="mute" id="count" aria-live="polite"></div>
-  <div id="list"></div>
-</section>
+Dashboard that helps users find, rank and interpret NASA microgravity
+combustion investigations for the fire safety of crewed environments
+(space station, lunar base, pressurized rover).
 
-<!-- 2 LAB -->
-<section id="lab" class="hide">
-  <div class="card" style="margin-bottom:16px">
-    <h2>2. Flammability Lab</h2>
-    <p class="mute">Estimate how close a solid material is to sustaining a flame in a given cabin atmosphere. Select a material:</p>
-    <div class="pills" id="pills"></div>
-  </div>
-  <div class="grid3">
-    <div class="card">
-      <h3>Cabin environment</h3>
-      <label>Atmosphere presets</label><div id="pre"></div>
-      <label>Gravity regime (changes the flame illustration only)</label>
-      <div class="gg" id="gg"></div>
-      <div class="row"><span>Oxygen (O₂)</span><b id="o2v"></b></div>
-      <input type="range" id="o2" min="15" max="100" step="0.5" value="20.9" aria-label="Oxygen percentage">
-      <div class="row" style="margin-top:12px"><span>Cabin pressure</span><b id="pv"></b></div>
-      <input type="range" id="p" min="20" max="115" step="0.5" value="101.3" aria-label="Cabin pressure in kilopascals">
-    </div>
-    <div class="card">
-      <h3>Flame morphology <span class="badge mono" id="bd"></span></h3>
-      <div class="mute mono" id="reg" style="margin-bottom:8px"></div>
-      <canvas id="cv" class="cv" width="320" height="240" role="img" aria-label="Illustration of flame shape for the selected gravity"></canvas>
-      <button class="pre" id="ext" style="margin-top:10px">Extinguish / re-ignite (illustration)</button>
-      <div class="mute" style="margin-top:6px">Illustration of flame shape only, not a simulation result.</div>
-    </div>
-    <div class="card">
-      <h3>Relative fire risk index</h3>
-      <div class="big mono"><span id="sc">0</span><span class="mute" style="font-size:22px"> %</span></div>
-      <div class="stat"><span>O₂ partial pressure</span><b class="mono" id="po"></b></div>
-      <div class="stat"><span>Critical O₂ at this pressure</span><b class="mono" id="xc"></b></div>
-      <div class="stat"><span>Material LOI (1 g, 101.3 kPa)</span><b class="mono" id="loi"></b></div>
-      <div class="note" style="margin-bottom:0">Model estimate based on literature LOI values at 1 g. It is a relative index, not a probability. Microgravity and partial-gravity calibration with PSI data is pending, so gravity does not change this number. Values not found in a PSI dataset are not shown.</div>
-    </div>
-  </div>
-</section>
+Built for the 2026 NASA Space Apps Challenge "Flame in Freefall"
+(Casablanca local event).
 
-<!-- 3 AI -->
-<section id="ai" class="card hide">
-  <h2>3. AI Insights</h2>
-  <p class="mute">Planned module: plain-language summaries of each investigation, generated from its PSI overview and linked publications (DOI), with a link back to the source for every statement.</p>
-  <div class="note">Status: in development. No AI-generated content is displayed until it can be traced to a PSI page or publication.</div>
-</section>
+## Live demo
+https://claude.ai/artifact/9EFZ7wLQJwgQLZdka59JvY
 
-<!-- 4 EARTH -->
-<section id="earth" class="card hide">
-  <h2>4. Earth Applications</h2>
-  <p class="mute">The challenge asks how PSI combustion research can improve fire safety on Earth. Examples named in the challenge statement:</p>
-  <div class="ea">
-    <div class="card"><h3>Fine water mist extinguishers</h3><p class="mute">Developed for use on the ISS, with practical applications on Earth. Related investigations: FLEX, FLEX-2 (flame extinguishment).</p></div>
-    <div class="card"><h3>Smoke detection</h3><p class="mute">NASA technology has improved terrestrial smoke detection. Related investigations: SAME, SAME-R, DAFT, SPICE.</p></div>
-    <div class="card"><h3>Firefighter gear</h3><p class="mute">Protective clothing and air tanks benefited from NASA technology. Material flammability studies: BASS, BASS-II, SAFFIRE.</p></div>
-  </div>
-</section>
-</main>
+## Modules
+1. Investigation Explorer: ranks NASA PSI combustion investigations by
+   relevance to a chosen crew environment
+2. Flammability Lab: relative fire risk index for solid materials as a
+   function of oxygen and pressure, with a flame illustration by gravity
+3. AI Insights: plain-language summaries traced to PSI sources (in progress)
+4. Earth Applications: terrestrial fire safety links named in the challenge
 
-<footer>Data source: NASA Physical Science Informatics (<a href="https://psi.nasa.gov" target="_blank" rel="noopener">psi.nasa.gov</a>). Interface code drafted with Gemini; dashboard logic drafted with Claude; all content to be verified by the team. Prototype, not an operational safety system.</footer>
+## Data sources
+- NASA Physical Science Informatics (PSI): https://psi.nasa.gov
+- NASA PSI research opportunity page (list of combustion investigations)
 
-<script>
-const $=id=>document.getElementById(id);
-/* tabs */
-document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));
-  ["explorer","lab","ai","earth"].forEach(t=>$(t).classList.toggle("hide",t!==b.dataset.t));
-});
-/* explorer */
-const W={iss:{solid:3,spread:2,suppression:3,smoke:3,modeling:1},moon:{solid:3,spread:3,suppression:2,smoke:2,modeling:2},rover:{solid:2,spread:2,suppression:3,smoke:3,modeling:1}};
-const TL={solid:"Solid-material flammability",spread:"Flame spread",suppression:"Suppression / extinction",smoke:"Smoke & detection",modeling:"Model validation"};
-const EARTH={suppression:"Earth link: fire suppression (e.g. fine water mist).",smoke:"Earth link: smoke detection."};
-const D=[
-["ACME BRE","Burning Rate Emulator","Gas",["modeling"],"ISS"],
-["ACME CLD Flame","Coflow Laminar Diffusion Flame","Gas",["modeling","smoke"],"ISS"],
-["ACME E-Field Flames","Electric Field Flames","Gas",["modeling"],"ISS"],
-["ACME s-Flames","Structure and Response of Spherical Diffusion Flames","Gas",["modeling"],"ISS"],
-["BASS","Burning and Suppression of Solids","Solid",["solid","spread","suppression"],"ISS"],
-["BASS-II","Burning and Suppression of Solids II","Solid",["solid","spread","suppression"],"ISS"],
-["CFI","Cool Flames Investigation","Liquid droplet",["modeling"],"ISS"],
-["DAFT / DAFT-2","Dust and Aerosol Measurement Feasibility Test 1 and 2","Smoke / aerosol",["smoke"],"ISS"],
-["FLEX","Flame Extinguishment Experiment","Liquid droplet",["suppression"],"ISS"],
-["FLEX-2","Flame Extinguishment Experiment 2","Liquid droplet",["suppression"],"ISS"],
-["Cool flame transitions (counterflow)","Quantitative Studies of Cool Flame Transitions at Radiation/Stretch Extinction","Ground study",["modeling"],"Ground"],
-["SAFFIRE I","Spacecraft Fire Experiment I","Solid",["solid","spread"],"Cygnus"],
-["SAFFIRE II","Spacecraft Fire Experiment II","Solid",["solid","spread"],"Cygnus"],
-["SAFFIRE III","Spacecraft Fire Experiment III","Solid",["solid","spread"],"Cygnus"],
-["SAME","Smoke Aerosol Measurement Experiment","Smoke / aerosol",["smoke"],"ISS"],
-["SAME-R","Smoke Aerosol Measurement Experiment, Reflight","Smoke / aerosol",["smoke"],"ISS"],
-["SLICE","Structure and Liftoff in Combustion Experiment","Gas",["modeling"],"ISS"],
-["SPICE","Smoke Point in Coflow Experiment","Gas",["smoke"],"ISS"],
-["SAME data modeling study","Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity","Ground study",["smoke","modeling"],"Ground"]];
-function renderList(){
-  const w=W[$("env").value],f=$("fuel").value,q=$("q").value.toLowerCase();
-  const rows=D.map(d=>({d,s:Math.min(100,Math.round(d[3].reduce((a,t)=>a+w[t],0)/8*100))}))
-   .filter(r=>(!f||r.d[2]===f)&&(!q||(r.d[0]+" "+r.d[1]+" "+r.d[2]+" "+r.d[3].map(t=>TL[t]).join(" ")).toLowerCase().includes(q))).sort((a,b)=>b.s-a.s);
-  $("count").textContent=rows.length+" of "+D.length+" investigations, ranked by relevance to the selected environment";
-  $("list").innerHTML=rows.map(({d,s})=>{const e=d[3].map(t=>EARTH[t]).filter(Boolean)[0]||"";
-   return '<div class="item"><div class="sc mono">'+s+'<small>relevance</small></div><div><b>'+d[0]+'</b><div class="mute">'+d[1]+' · '+d[4]+'</div><div style="margin-top:6px"><span class="tag f">'+d[2]+'</span>'+d[3].map(t=>'<span class="tag">'+TL[t]+'</span>').join("")+'</div>'+(e?'<div class="mute">'+e+'</div>':"")+'<a style="font-size:13px" target="_blank" rel="noopener" href="https://psi.nasa.gov/physci/repo/search?q='+encodeURIComponent(d[0].split(" ")[0])+'&data_source=psi&data_type=investigation">Search in PSI</a></div></div>';}).join("");
-}
-["env","fuel"].forEach(i=>$(i).onchange=renderList);$("q").oninput=renderList;renderList();
+## Status
+Prototype. Relevance scores and the flammability model are team
+heuristics based on literature values at 1 g, and are being checked
+against PSI data. Not an operational safety system.
 
-/* lab */
-const MATS=[["Polyurethane foam","Polymer",17],["PMMA (acrylic)","Polymer",17.5],["Polyethylene","Polymer",17.5],["Nylon","Polymer",24],["Silicone","Polymer",26],["Kapton (polyimide)","Polymer",37],["PTFE (Teflon)","Polymer",95],["Cotton","Fabric",18],["Wool","Fabric",25],["Nomex","Fabric",29]];
-const PRE=[["ISS standard",101.3,20.9],["EVA prebreathe",70.3,26.5],["Exploration",56.5,34],["Apollo cabin",34.5,100]];
-const G=[["Microgravity (0 g)","ISS / orbital",0],["Lunar base (1/6 g)","partial gravity",.17],["Mars habitat (3/8 g)","partial gravity",.375],["Earth baseline (1 g)","sea level",1]];
-let mi=1,gi=0,on=true;
-function pills(){$("pills").innerHTML=MATS.map((m,i)=>'<button class="pill'+(i===mi?' on':'')+'" data-i="'+i+'"><b>'+m[0]+'</b>'+m[1]+' · LOI '+m[2]+' %</button>').join("");
-  $("pills").querySelectorAll("button").forEach(b=>b.onclick=()=>{mi=+b.dataset.i;on=true;pills();upd()});}
-function gbtn(){$("gg").innerHTML=G.map((g,i)=>'<button class="gb'+(i===gi?' on':'')+'" data-i="'+i+'"><b>'+g[0]+'</b>'+g[1]+'</button>').join("");
-  $("gg").querySelectorAll("button").forEach(b=>b.onclick=()=>{gi=+b.dataset.i;gbtn();upd()});}
-$("pre").innerHTML=PRE.map((p,i)=>'<button class="pre" data-i="'+i+'">'+p[0]+'</button>').join("");
-$("pre").querySelectorAll("button").forEach(b=>b.onclick=()=>{const p=PRE[+b.dataset.i];$("p").value=p[1];$("o2").value=p[2];on=true;upd()});
-$("ext").onclick=()=>{on=!on};
-const f1=(n,d=1)=>n.toFixed(d);
-let S={score:0};
-function upd(){
-  const X=+$("o2").value,P=+$("p").value,loi=MATS[mi][2];
-  const xc=Math.min(100,loi*Math.pow(101.3/P,.8)),r=X/xc,sc=Math.round(100/(1+Math.exp(-6*Math.log(r))));
-  S.score=sc;
-  $("o2v").textContent=f1(X)+" %";$("pv").textContent=f1(P)+" kPa ("+f1(P*.145038)+" psi)";
-  $("sc").textContent=sc;$("po").textContent=f1(X*P/100)+" kPa";$("xc").textContent=xc>=100?"> 100 %":f1(xc)+" %";$("loi").textContent=loi+" %";
-  const lv=sc<25?["LOW","#34d399"]:sc<50?["MODERATE",'#fbbf24']:sc<75?["HIGH","#fb923c"]:["CRITICAL","#f87171"];
-  $("bd").textContent=lv[0];$("bd").style.color=lv[1];$("bd").style.borderColor=lv[1];
-  $("reg").textContent=["Spherical, diffusion-controlled blue flame","Slightly elongated flame (partial g)","Elongated flame (partial g)","Buoyant teardrop flame"][gi];
-  pills();
-}
-["o2","p"].forEach(i=>$(i).oninput=()=>{on=true;upd()});
-const cv=$("cv"),cx=cv.getContext("2d");let t=0;
-function draw(){
-  t+=.08;cx.clearRect(0,0,320,240);
-  const g=G[gi][2],sc=S.score;
-  if(on&&sc>=8){
-    const r=14+sc*.42,fl=1+.04*Math.sin(t*3),ry=r*(1+1.3*g)*fl,rx=r*(1-.25*g),cy=120+(g?r*.5*g:0)-g*30;
-    const c1=[Math.round(110+g*140),Math.round(150+g*40),Math.round(255-g*215)];
-    const gr=cx.createRadialGradient(160,cy,2,160,cy,ry);
-    gr.addColorStop(0,"rgba(255,255,255,.95)");gr.addColorStop(.3,"rgba("+c1+",.85)");gr.addColorStop(1,"rgba("+c1+",0)");
-    cx.fillStyle=gr;cx.beginPath();cx.ellipse(160,cy,rx*1.3,ry*1.2,0,0,7);cx.fill();
-  }else{cx.fillStyle="#a1a1c2";cx.font="13px Inter,sans-serif";cx.textAlign="center";cx.fillText(on?"No sustained flame expected":"Extinguished",160,124);}
-  requestAnimationFrame(draw);
-}
-gbtn();pills();upd();draw();
-</script>
-</body>
-</html>
+## Tools and AI use
+Interface code drafted with Gemini. Dashboard logic drafted with Claude.
+All content is reviewed by the team.
+
+## Team
+(CHEMPHILES)
+
+## License
+MIT
