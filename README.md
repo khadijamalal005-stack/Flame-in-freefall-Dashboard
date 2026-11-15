@@ -21,7 +21,12 @@ Prototype. Relevance scores are team heuristics and are being checked
 against the PSI investigation pages.
 
 ## Team
-(add your team name and members)
-
+CHEMPHILES :
+Khadija Malal
+Meryam El Alami
+Sahar El Marzouki
+Abla Moufidi
+Malal Igouzoulene
+Hafsa Riad 
 ## License
 MIT
