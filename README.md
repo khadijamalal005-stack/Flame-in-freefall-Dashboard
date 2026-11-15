@@ -26,7 +26,7 @@ Khadija Malal ,
 Meryam El Alami ,
 Sahar El Marzouki ,
 Abla Moufidi ,
-Malal Igouzoulene ,
+Malak Igouzoulene ,
 Hafsa Riad .
 ## License
 MIT
