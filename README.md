@@ -22,11 +22,11 @@ against the PSI investigation pages.
 
 ## Team
 CHEMPHILES :
-Khadija Malal
-Meryam El Alami
-Sahar El Marzouki
-Abla Moufidi
-Malal Igouzoulene
-Hafsa Riad 
+Khadija Malal ,
+Meryam El Alami ,
+Sahar El Marzouki ,
+Abla Moufidi ,
+Malal Igouzoulene ,
+Hafsa Riad .
 ## License
 MIT
